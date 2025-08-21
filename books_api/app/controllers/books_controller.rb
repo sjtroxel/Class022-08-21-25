@@ -12,11 +12,11 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = @current_user.books.new(book_params)
-    if book.save
+    book = BookService::Base.create_book(book_params.merge(user: @current_user))
+    if book.is_a?(Book) && book.persisted?
       render json: BookBlueprint.render(book), status: :created
     else
-      render json: book.errors, status: :unprocessable_entity
+      render json: book, status: :unprocessable_entity
     end
   end
 
