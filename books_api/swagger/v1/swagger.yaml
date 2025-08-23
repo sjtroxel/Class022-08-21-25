@@ -1,0 +1,56 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/books":
+    get:
+      summary: list books
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create book
+      responses:
+        '200':
+          description: successful
+  "/books/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show book
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update book
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update book
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete book
+      responses:
+        '200':
+          description: successful
+  "/my_books":
+    get:
+      summary: my_books book
+      responses:
+        '200':
+          description: successful
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com

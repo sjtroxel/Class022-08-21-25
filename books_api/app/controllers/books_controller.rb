@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :update, :destroy]
 
   def index
-    books = Book.all
+    books = BookService::Base.filter_books(params)
     render json: BookBlueprint.render(books)
   end
 
